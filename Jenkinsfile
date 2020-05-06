@@ -17,10 +17,10 @@ node {
   }
   
   stage('deploy') {
-    def resourceGroup = '<myResourceGroup>' 
-    def webAppName = '<app_name>'
+    def resourceGroup = 'jenkinsrg' 
+    def webAppName = 'azcliapp01'
     // login Azure
-    withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
+    withCredentials([azureServicePrincipal('3d04aef4-04fe-4b08-9826-832120a421b2')]) {
       sh '''
         az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
         az account set -s $AZURE_SUBSCRIPTION_ID
